@@ -32,7 +32,7 @@ public class Parser {
     private void erro(String esperado){
         Token token = peek();
 
-        System.out.printf("Erro na linha %d, coluna %d: esperado %s, mas encontrado %s%n",
+        System.out.printf("Erro na linha %d, coluna %d: esperado '%s', mas encontrado '%s'%n",
                 token.getLinha(), token.getColuna(), esperado, token.getTexto());
         System.exit(1);
     }
@@ -60,6 +60,12 @@ public class Parser {
         }
 
         consumir(TokenType.PONTO_VIRGULA, ";");
+    }
+
+    public void declaracoes(){
+        while (verificar(TokenType.INTEIRO) || verificar(TokenType.REAL)){
+            declaracao();
+        }
     }
 
 }
