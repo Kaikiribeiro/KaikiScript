@@ -134,8 +134,10 @@ public class Parser {
 
     public void ifElse(){
         iF();
-        consumir(TokenType.SENAO, "else");
-        bloco();
+        if (verificar(TokenType.SENAO)){
+            consumir(TokenType.SENAO, "else");
+            bloco();
+        }
     }
 
 }
