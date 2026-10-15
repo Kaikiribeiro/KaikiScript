@@ -68,4 +68,30 @@ public class Parser {
         }
     }
 
+    public void fator(){
+        if (verificar(TokenType.NUMERO)){
+            avancar();
+        } else if(verificar(TokenType.IDENTIFICADOR)){
+            avancar();
+        } else {
+            erro("numero ou variavel");
+        }
+    }
+
+    public void termo(){
+        fator();
+        while (verificar(TokenType.VEZES) || verificar(TokenType.DIVISAO)){
+            avancar();
+            fator();
+        }
+    }
+
+    public void expressao(){
+        termo();
+        while (verificar(TokenType.MAIS) || verificar(TokenType.MENOS)){
+            avancar();
+            termo();
+        }
+    }
+
 }
