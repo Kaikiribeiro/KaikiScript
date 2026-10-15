@@ -94,4 +94,18 @@ public class Parser {
         }
     }
 
+    public void condicao() {
+        expressao();
+
+        if (verificar(TokenType.IGUAL) || verificar(TokenType.DIFERENTE)
+                || verificar(TokenType.MENOR_QUE) || verificar(TokenType.MAIOR_QUE)
+                || verificar(TokenType.MAIOR_OU_IGUAL_QUE) || verificar(TokenType.MENOR_OU_IGUAL_QUE)) {
+            avancar();
+        } else {
+            erro("operador relacional");
+        }
+
+        expressao();
+    }
+
 }

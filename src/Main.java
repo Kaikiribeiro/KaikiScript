@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int caso = 9;   // <-- troque este número para escolher o teste
+        int caso = 10;   // <-- troque este número para escolher o teste
 
         List<Token> tokens = new ArrayList<>();
         String regra = "expressao";   // qual método do Parser será testado
@@ -87,6 +87,44 @@ public class Main {
                 add(tokens, TokenType.INTEIRO, "int");
                 add(tokens, TokenType.IDENTIFICADOR, "x");
                 add(tokens, TokenType.ATRIBUICAO, "=");
+                add(tokens, TokenType.PONTO_VIRGULA, ";");
+                break;
+
+            case 10: // x < 10  -> sem erro
+                regra = "condicao";
+                add(tokens, TokenType.IDENTIFICADOR, "x");
+                add(tokens, TokenType.MENOR_QUE, "<");
+                add(tokens, TokenType.NUMERO, "10");
+                break;
+
+            case 11: // x + 1 >= y * 2  -> sem erro
+                regra = "condicao";
+                add(tokens, TokenType.IDENTIFICADOR, "x");
+                add(tokens, TokenType.MAIS, "+");
+                add(tokens, TokenType.NUMERO, "1");
+                add(tokens, TokenType.MAIOR_OU_IGUAL_QUE, ">=");
+                add(tokens, TokenType.IDENTIFICADOR, "y");
+                add(tokens, TokenType.VEZES, "*");
+                add(tokens, TokenType.NUMERO, "2");
+                break;
+
+            case 12: // x == 5  -> sem erro
+                regra = "condicao";
+                add(tokens, TokenType.IDENTIFICADOR, "x");
+                add(tokens, TokenType.IGUAL, "==");
+                add(tokens, TokenType.NUMERO, "5");
+                break;
+
+            case 13: // x 10  -> erro: esperado operador relacional, encontrado 10
+                regra = "condicao";
+                add(tokens, TokenType.IDENTIFICADOR, "x");
+                add(tokens, TokenType.NUMERO, "10");
+                break;
+
+            case 14: // x < ;  -> erro: esperado numero ou variavel, encontrado ;
+                regra = "condicao";
+                add(tokens, TokenType.IDENTIFICADOR, "x");
+                add(tokens, TokenType.MENOR_QUE, "<");
                 add(tokens, TokenType.PONTO_VIRGULA, ";");
                 break;
 
