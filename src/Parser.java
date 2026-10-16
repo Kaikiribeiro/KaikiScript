@@ -56,7 +56,7 @@ public class Parser {
 
         if (verificar(TokenType.ATRIBUICAO)) {
             consumir(TokenType.ATRIBUICAO, "=");
-            consumir(TokenType.NUMERO, "numero");
+            expressao();
         }
 
         consumir(TokenType.PONTO_VIRGULA, ";");
