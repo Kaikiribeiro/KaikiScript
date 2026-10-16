@@ -140,4 +140,14 @@ public class Parser {
         }
     }
 
+    public void programa(){
+        consumir(TokenType.ALGORITMO,"algoritmo");
+        consumir(TokenType.ABRE_CHAVE, "{");
+        declaracoes();
+        ifElse();
+        consumir(TokenType.FECHA_CHAVE, "}");
+        consumir(TokenType.FIM_ALGORITMO, "fim_algoritmo");
+        consumir(TokenType.EOF, "fim do arquivo");
+    }
+
 }
